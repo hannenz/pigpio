@@ -1,7 +1,7 @@
 #
 # Set CROSS_PREFIX to prepend to all compiler tools at once for easier
 # cross-compilation.
-CROSS_PREFIX =
+CROSS_PREFIX = 
 CC           = $(CROSS_PREFIX)gcc
 AR           = $(CROSS_PREFIX)ar
 RANLIB       = $(CROSS_PREFIX)ranlib
@@ -23,7 +23,10 @@ OBJ2     = pigpiod_if.o command.o
 LIB3     = libpigpiod_if2.so
 OBJ3     = pigpiod_if2.o command.o
 
-LIB      = $(LIB1) $(LIB2) $(LIB3)
+LIB4	 = libpigpio.a
+OBJ4 	 = pigpio.o command.o
+
+LIB      = $(LIB1) $(LIB2) $(LIB3) $(LIB4)
 
 ALL     = $(LIB) x_pigpio x_pigpiod_if x_pigpiod_if2 pig2vcd pigpiod pigs
 
@@ -152,6 +155,9 @@ $(LIB3):	$(OBJ3)
 	ln -fs $(LIB3).$(SOVERSION) $(LIB3)
 	$(STRIPLIB) $(LIB3)
 	$(SIZE)     $(LIB3)
+
+$(LIB4): 	$(OBJ4)
+	$(AR) crs $(LIB4) $(OBJ4)
 
 # generated using gcc -MM *.c
 
