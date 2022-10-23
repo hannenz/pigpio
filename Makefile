@@ -99,6 +99,7 @@ install:	$(ALL)
 	install -m 0755 libpigpio.so.$(SOVERSION)      $(DESTDIR)$(libdir)
 	install -m 0755 libpigpiod_if.so.$(SOVERSION)  $(DESTDIR)$(libdir)
 	install -m 0755 libpigpiod_if2.so.$(SOVERSION) $(DESTDIR)$(libdir)
+	install -m 0755 libpigpio.a 					$(DESTDIR)$(libdir)
 	cd $(DESTDIR)$(libdir) && ln -fs libpigpio.so.$(SOVERSION)      libpigpio.so
 	cd $(DESTDIR)$(libdir) && ln -fs libpigpiod_if.so.$(SOVERSION)  libpigpiod_if.so
 	cd $(DESTDIR)$(libdir) && ln -fs libpigpiod_if2.so.$(SOVERSION) libpigpiod_if2.so
